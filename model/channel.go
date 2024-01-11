@@ -51,9 +51,9 @@ func GetChannelById(typeid int, selectAll bool) (*Channel, error) {
 	channel := Channel{Type: typeid}
 	var err error = nil
 	if selectAll {
-		err = DB.First(&channel, "type = ?", typeid).Error
+		err = DB.First(&channel, "id = ?", typeid).Error
 	} else {
-		err = DB.Omit("key").First(&channel, "type = ?", typeid).Error
+		err = DB.Omit("key").First(&channel, "id = ?", typeid).Error
 	}
 	return &channel, err
 }
